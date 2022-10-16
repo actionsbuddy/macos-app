@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Actions Buddy</title>
+        <item>
+            <title>1.0.0-alpha.2</title>
+            <pubDate>Mon, 24 Oct 2022 23:01:01 +0200</pubDate>
+            <link>https://actionsbuddy.app</link>
+            <sparkle:version>20221024204649</sparkle:version>
+            <sparkle:shortVersionString>1.0.0-alpha.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.2</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/actionsbuddy/macos-app/releases/download/1.0.0-alpha.2/Actions-Buddy-1.0.0-alpha.2.zip" length="2988558" type="application/octet-stream" sparkle:edSignature="wEUiv0AXZN/Zwu24Qr7GatanL+1dCjuhsHNyWTiOporNeisJduI7pIlf16Iw6TIhhglC1Hsd4ek9MCIKX94AAw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/actionsbuddy/macos-app/releases/download/1.0.0-alpha.2/Actions%20Buddy20221024204649-20221023133557.delta" sparkle:deltaFrom="20221023133557" length="105142" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="1378880" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="k+wo0rticTls5h3pZKNbqnIro5mKav5K7+kHFGxFxAO7Ub2J38kPGuEWthbv3nkbB+iGpiLRuKDZ5P4P0s+vBA=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
+            <title>1.0.0-alpha.1</title>
+            <pubDate>Mon, 24 Oct 2022 23:05:40 +0200</pubDate>
+            <link>https://actionsbuddy.app</link>
+            <sparkle:version>20221023133557</sparkle:version>
+            <sparkle:shortVersionString>1.0.0-alpha.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.2</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/actionsbuddy/macos-app/releases/download/1.0.0-alpha.1/Actions-Buddy-1.0.0-alpha.1.zip" length="2987166" type="application/octet-stream" sparkle:edSignature="EwFEB+l87XkkuBEENcoV5Mwr4KDBy/iFGvQEvRWKWhbEkbFybdw3vARfAi6wT53TXikhjBdJ4NP/F1jK584ABg=="/>
+        </item>
+    </channel>
+</rss>
