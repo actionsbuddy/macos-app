@@ -1,23 +1,30 @@
 name: Generate Sparkle appcast
 on:
   release:
-    types: [published]
   workflow_dispatch:
     inputs:
       release_tag:
         description: Release tag
-        required: true
         type: string
+        required: true
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SPARKLE_VERSION: "2.3.0"
+  TAG: ${{ inputs.release_tag }}
 jobs:
   generate-appcast:
-    runs-on: ubuntu-latest
+    runs-on: macos-12
     steps:
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Download appcast.xml
+      - name: Setup Sparkle binaries
+        run: >-
+          GH_REPO=sparkle-project/Sparkle gh release download $SPARKLE_VERSION -p '*.tar.xz' --dir ~/.sparkle/ &&
+          tar -xf ~/.sparkle/*.tar.xz --directory ~/.sparkle/ &&
+          echo ~/.sparkle/bin/ >> $GITHUB_PATH
+      - name: Checkout gh-pages branch
         uses: actions/checkout@v3
         with:
           ref: gh-pages
@@ -25,12 +32,33 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: main
-          path: main
-      - name: Download Sparkle binaries
-        run: GH_REPO=sparkle-project/Sparkle gh release download 2.3.0 -p '*.tar.xz'
-      - name: Extract Sparkle binaries
-        run: mkdir sparkle && tar -xf Sparkle-2.3.0.tar.xz --directory sparkle
-      - name: Download the last 5 releases
-        run: gh api '/repos/${{ env.GITHUB_REPOSITORY }}/releases?per_page=5' -q '.[].tag_name' | xargs -L1 gh release download -p '*.tar.xz'
-      - run: ls
-
+          path: ./main/
+      - name: Download the latest app releases
+        run: gh api "/repos/$GITHUB_REPOSITORY/releases?per_page=5" -q ".[].tag_name" | xargs -L1 gh release download --dir ./releases/ -p "*.zip" -p "*.delta"
+      - name: Generate appcast
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: >-
+          mv appcast.xml ./releases/ &&
+          echo $SPARKLE_PRIVATE_KEY | generate_appcast --ed-key-file - ./releases/ &&
+          mv ./releases/appcast.xml .
+      - name: Remove spaces in release files
+        run: >-
+          for f in ./releases/*.delta;
+            do mv -v -- "$f" "$(echo "$f" | tr ' ' '-')";
+          done
+      - name: Rewrite the appcast with Github release URLs
+        run: node ./main/scripts/rewrite-appcast.mjs ./appcast.xml
+      - name: Find the build number of the release
+        id: find-build-number
+        run: >-
+          ditto -x -k releases/*${TAG:-$GITHUB_REF}.zip . &&
+          plutil -p *.app/Contents/Info.plist | grep CFBundleVersion | cut -d '"' -f4 | xargs -- bash -c "echo RELEASE_BUILD=\$0" >> $GITHUB_OUTPUT
+      - name: Upload the delta files to the Github release
+        run: gh release upload ${TAG:-$GITHUB_REF} releases/*${{ steps.find-build-number.outputs.RELEASE_BUILD }}-*.delta --clobber
+      - name: Commit the appcast
+        run: >-
+          git add ./appcast.xml &&
+          git status &&
+          git commit -m 'Generate up-to-date appcast' --allow-empty &&
+          git push
