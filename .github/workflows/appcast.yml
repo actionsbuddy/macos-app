@@ -1,0 +1,36 @@
+name: Generate Sparkle appcast
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Release tag
+        required: true
+        type: string
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  generate-appcast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Download appcast.xml
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+      - name: Download node scripts
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          path: main
+      - name: Download Sparkle binaries
+        run: GH_REPO=sparkle-project/Sparkle gh release download 2.3.0 -p '*.tar.xz'
+      - name: Extract Sparkle binaries
+        run: mkdir sparkle && tar -xf Sparkle-2.3.0.tar.xz --directory sparkle
+      - name: Download the last 5 releases
+        run: gh api '/repos/${{ env.GITHUB_REPOSITORY }}/releases?per_page=5' -q '.[].tag_name' | xargs -L1 gh release download -p '*.tar.xz'
+      - run: ls
+
