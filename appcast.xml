@@ -3,6 +3,18 @@
     <channel>
         <title>Actions Buddy</title>
         <item>
+            <title>1.0.0-alpha.3</title>
+            <pubDate>Wed, 16 Nov 2022 22:46:29 +0000</pubDate>
+            <sparkle:version>20221116223544</sparkle:version>
+            <sparkle:shortVersionString>1.0.0-alpha.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.2</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/actionsbuddy/macos-app/releases/download/1.0.0-alpha.3/Actions-Buddy-1.0.0-alpha.3.zip" length="3173130" type="application/octet-stream" sparkle:edSignature="mmnYA8raaN9MJD/7YgU0gOEcsk3TSupeqflCw5/tzo/IYyYdUl0WwuiGH4m10S7EAXs6PziuCEy7QJyfINbzCg=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/actionsbuddy/macos-app/releases/download/1.0.0-alpha.3/Actions-Buddy20221116223544-20221024204649.delta" sparkle:deltaFrom="20221024204649" length="384626" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="1378880" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="TtOEgytCU393ORl+uOYaqaZ6sPH0Pi54LTvvZntEp1e9Gnu4E9fE3NrTEx98NQhba7kKEw2cLp6gCrCDsniOCQ=="/>
+                <enclosure url="https://github.com/actionsbuddy/macos-app/releases/download/1.0.0-alpha.3/Actions-Buddy20221116223544-20221023133557.delta" sparkle:deltaFrom="20221023133557" length="392806" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="1378880" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="8CA/wZxxnUHqa2cmskutB1F/av/MZRADwZ0A8HOmcUN/Gxs0ThVaDHRpblzTBwAPXN77j2Dr+9W201QioZxOCw=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.0.0-alpha.2</title>
             <pubDate>Mon, 24 Oct 2022 23:01:01 +0200</pubDate>
             <link>https://actionsbuddy.app</link>
@@ -11,7 +23,7 @@
             <sparkle:minimumSystemVersion>12.2</sparkle:minimumSystemVersion>
             <enclosure url="https://github.com/actionsbuddy/macos-app/releases/download/1.0.0-alpha.2/Actions-Buddy-1.0.0-alpha.2.zip" length="2988558" type="application/octet-stream" sparkle:edSignature="wEUiv0AXZN/Zwu24Qr7GatanL+1dCjuhsHNyWTiOporNeisJduI7pIlf16Iw6TIhhglC1Hsd4ek9MCIKX94AAw=="/>
             <sparkle:deltas>
-                <enclosure url="https://github.com/actionsbuddy/macos-app/releases/download/1.0.0-alpha.2/Actions-Buddy20221024204649-20221023133557.delta" sparkle:deltaFrom="20221023133557" length="105142" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="1378880" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="k+wo0rticTls5h3pZKNbqnIro5mKav5K7+kHFGxFxAO7Ub2J38kPGuEWthbv3nkbB+iGpiLRuKDZ5P4P0s+vBA=="/>
+                <enclosure url="https://github.com/actionsbuddy/macos-app/releases/download/1.0.0-alpha.2/actionsbuddy%2Fmacos-app%2Freleases%2Fdownload%2F1.0.0-alpha.2%2FActions-Buddy20221024204649-20221023133557.delta" sparkle:deltaFrom="20221023133557" length="105142" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="1378880" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="k+wo0rticTls5h3pZKNbqnIro5mKav5K7+kHFGxFxAO7Ub2J38kPGuEWthbv3nkbB+iGpiLRuKDZ5P4P0s+vBA=="/>
             </sparkle:deltas>
         </item>
         <item>
